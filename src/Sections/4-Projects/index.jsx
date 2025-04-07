@@ -26,14 +26,29 @@ const projects = [
   },
 ];
 
+const skills = [
+  "React",
+  "Node.js",
+  "Express",
+  "Golang",
+  "Python",
+  "PyTorch",
+  "Sklearn",
+  "MongoDB",
+  "MySQL",
+  "Prisma",
+  "Firebase",
+  "Docker",
+  "Git",
+  "Linux",
+];
+
 export function Projects() {
   return (
     <section
       id="projects"
       className="projects-section"
-      style={{
-        scrollMarginTop: "var(--nav-height, 80px)",
-      }}
+      style={{ scrollMarginTop: "var(--nav-height, 80px)" }}
     >
       <Canvas
         className="projects-canvas"
@@ -42,7 +57,7 @@ export function Projects() {
         <ambientLight intensity={1.5} />
       </Canvas>
 
-      <h2 className="projects-title">🛠 Projects</h2>
+      <h2 className="projects-title">🛠 Projects and Skills</h2>
 
       <div className="projects-flex">
         {projects.map((project, i) => (
@@ -75,6 +90,30 @@ export function Projects() {
             )}
           </motion.div>
         ))}
+      </div>
+
+      <div className="skills-section">
+        <h3 className="skills-title">🧠 Technical Skills</h3>
+        <div className="skills-list">
+          {skills.map((skill, i) => (
+            <motion.span
+              className="skill-badge"
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{
+                type: "spring",
+                stiffness: 300,
+                damping: 20,
+                duration: 0.3,
+                delay: i * 0.05,
+              }}
+              viewport={{ once: false }}
+            >
+              {skill}
+            </motion.span>
+          ))}
+        </div>
       </div>
     </section>
   );

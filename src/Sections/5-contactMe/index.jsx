@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import emailjs from "emailjs-com";
 import "./styles.css";
 
 export function Contact() {
@@ -15,9 +16,28 @@ export function Contact() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Submitted:", formData);
-    setSubmitted(true);
-    setFormData({ name: "", email: "", message: "" });
+    emailjs
+      .send(
+        process.env.REACT_APP_EMAIL_SERVICE_ID,
+        process.env.REACT_APP_EMAIL_TEMPLATE_ID,
+        {
+          title: "Contacted Via Portfolio",
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+        },
+        process.env.REACT_APP_EMAIL_PUBLIC_KEY
+      )
+      .then(
+        (result) => {
+          console.log("Success:", result.text);
+          setSubmitted(true);
+          setFormData({ name: "", email: "", message: "" });
+        },
+        (error) => {
+          console.log("Error:", error.text);
+        }
+      );
   };
 
   return (
