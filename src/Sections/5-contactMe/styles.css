@@ -64,3 +64,24 @@
   color: #888;
   text-align: center;
 }
+
+.contact-socials {
+  margin-top: 2rem;
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  z-index: 1;
+}
+
+.social-link {
+  color: #4fd1c5;
+  font-weight: 500;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.social-link:hover {
+  color: white;
+  text-decoration: underline;
+}

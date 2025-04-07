@@ -86,6 +86,17 @@ export function Contact() {
           {submitted ? "Message Sent ✅" : "Send Message"}
         </button>
       </motion.form>
+      <div className="contact-socials">
+        <a
+          href="https://www.linkedin.com/in/teja-puvvula-a98368210/"
+          target="_blank"
+          rel="noreferrer"
+          className="social-link"
+        >
+          🔗 LinkedIn
+        </a>
+      </div>
+
       <footer className="contact-footer">
         &copy; {new Date().getFullYear()} Teja Puvvula. All rights reserved.
       </footer>
