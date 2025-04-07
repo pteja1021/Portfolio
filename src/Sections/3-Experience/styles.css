@@ -1,0 +1,84 @@
+.experience-section {
+  background: #0f0f0f;
+  color: white;
+}
+
+.experience-title {
+  text-align: center;
+  font-size: clamp(2rem, 5vw, 3rem);
+  margin-top: 0rem;
+  margin-bottom: 2rem;
+  color: white;
+}
+
+.experience-list {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.experience-card {
+  background: rgba(255, 255, 255, 0.05);
+  border-left: 4px solid #4fd1c5;
+  padding: 2rem;
+  border-radius: 12px;
+  backdrop-filter: blur(4px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+.experience-header h3 {
+  margin: 0;
+  font-size: 1.3rem;
+}
+
+.experience-period {
+  color: #a0aec0;
+  font-size: 0.9rem;
+  margin-top: 0.2rem;
+  margin-bottom: 1rem;
+}
+
+.experience-points {
+  padding-left: 1.5rem;
+  list-style-type: disc;
+  line-height: 1.6;
+  font-size: 1rem;
+  margin: 1rem 0;
+}
+
+.experience-tags {
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag {
+  background: #2d3748;
+  color: #4fd1c5;
+  padding: 0.3rem 0.7rem;
+  border-radius: 9999px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.experience-title::before {
+  content: "💻";
+  margin-right: 0.5rem;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.experience-title::before {
+  animation: bounce 2s infinite;
+  display: inline-block;
+}

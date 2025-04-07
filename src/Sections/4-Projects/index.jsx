@@ -1,87 +1,81 @@
 import { motion } from "framer-motion";
-export function Projects() {
-  const projects = [
-    {
-      title: "Puntos",
-      description:
-        "A web app that boosts workplace engagement. Features Firebase Auth, JWT, Slack alerts, and MVC backend.",
-      github: "https://github.com/teja-projects/puntos",
-    },
-    {
-      title: "Hand Sign Recognition",
-      description:
-        "ML model using PyTorch and ensemble methods like DenseNet and ShuffleNet, achieving 99% accuracy.",
-      github: "https://github.com/teja-projects/handsign-recognition",
-    },
-  ];
+import { Canvas } from "@react-three/fiber";
+import "./styles.css";
 
+const projects = [
+  {
+    title: "Puntos",
+    tech: ["React", "Firebase", "Express", "Prisma", "MySQL"],
+    description:
+      "A web app for peer recognition and rewards. Integrated Slack alerts, Firebase auth, and admin tools.",
+    link: "https://github.com/pteja1021/puntos",
+  },
+  {
+    title: "Hand Sign Recognition",
+    tech: ["Python", "PyTorch", "Sklearn"],
+    description:
+      "99% accuracy using DenseNet, ShuffleNet, ResNet ensemble. Built in PyTorch with preprocessing.",
+    link: "https://github.com/pteja1021",
+  },
+  {
+    title: "Digit and Letter Recognition",
+    tech: ["Python", "PyTorch", "Sklearn"],
+    description:
+      "Variety of models including MLP, DenseNet, RNN, ViT were studied and compared. Trained on the EMNIST dataset.",
+    link: "https://github.com/pteja1021/EMNIST-dataset",
+  },
+];
+
+export function Projects() {
   return (
     <section
+      id="projects"
+      className="projects-section"
       style={{
-        minHeight: "100vh",
-        display: "flex",
-        margin: "2rem",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-        flexWrap: "wrap",
+        scrollMarginTop: "var(--nav-height, 80px)",
       }}
     >
-      <h2 style={{ fontSize: "2rem", marginBottom: "2rem" }}>Projects</h2>
-      <motion.div
-        style={{
-          display: "flex",
-          gap: "1.5rem",
-          overflowX: "auto",
-          width: "100%",
-          scrollBehavior: "smooth",
-          height: "100%",
-        }}
-        whileTap={{ cursor: "grabbing" }}
+      <Canvas
+        className="projects-canvas"
+        camera={{ position: [0, 0, 15], fov: 60 }}
       >
-        {projects.map((project, idx) => (
+        <ambientLight intensity={1.5} />
+      </Canvas>
+
+      <h2 className="projects-title">🛠 Projects</h2>
+
+      <div className="projects-flex">
+        {projects.map((project, i) => (
           <motion.div
-            key={idx}
-            style={{
-              border: "1px solid #ccc",
-              borderRadius: "1rem",
-              padding: "1rem",
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "space-between",
-            }}
-            whileHover={{ scale: 1.01 }}
-            transition={{ type: "spring", stiffness: 300 }}
+            className="project-card"
+            key={i}
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false }}
+            transition={{ duration: 0.6, delay: i * 0.2 }}
           >
-            <div style={{ flex: "1" }}>
-              <h3
-                style={{
-                  fontWeight: "bold",
-                  fontSize: "1.125rem",
-                  marginBottom: "0.5rem",
-                }}
-              >
-                {project.title}
-              </h3>
-              <p style={{ fontSize: "0.875rem", marginBottom: "0.5rem" }}>
-                {project.description}
-              </p>
+            <h3 className="card-title">{project.title}</h3>
+            <p className="card-desc">{project.description}</p>
+            <div className="card-tags">
+              {project.tech.map((tag, j) => (
+                <span key={j} className="tag">
+                  #{tag}
+                </span>
+              ))}
             </div>
-            <a
-              href={project.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                color: "#2563eb",
-                fontSize: "0.875rem",
-                textDecoration: "underline",
-              }}
-            >
-              GitHub
-            </a>
+            {project.link && (
+              <a
+                href={project.link}
+                className="card-link"
+                target="_blank"
+                rel="noreferrer"
+              >
+                GitHub ↗
+              </a>
+            )}
           </motion.div>
         ))}
-      </motion.div>
+      </div>
     </section>
   );
 }

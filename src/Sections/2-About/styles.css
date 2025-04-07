@@ -1,11 +1,11 @@
 .about-section {
   position: relative;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 2rem;
   overflow: hidden;
+  min-height: "100vh";
+  scroll-margin-top: var(--nav-height, 80px);
 }
 
 .about-image-container {
@@ -76,8 +76,9 @@
 
 .about-title {
   z-index: 1;
-  font-size: clamp(2rem, 4vw, 3rem);
-  margin-bottom: 0;
+  font-size: clamp(2rem, 5vw, 3rem);
+  margin-top: 0rem;
+  margin-bottom: 2rem;
   text-align: center;
   width: 100%;
 }

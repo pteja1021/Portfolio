@@ -69,7 +69,15 @@ export function About() {
   }, [inView, controlsImage, controlsText]);
 
   return (
-    <section id="about" ref={ref} className="about-section">
+    <section
+      id="about"
+      className="about-section"
+      style={{
+        minHeight: "100vh",
+        scrollMarginTop: "var(--nav-height, 80px)",
+      }}
+      ref={ref}
+    >
       <Canvas
         className="about-canvas"
         camera={{ position: [0, 0, 15], fov: 75 }}
@@ -78,14 +86,7 @@ export function About() {
         <FloatingTextParticles />
       </Canvas>
 
-      <motion.h2
-        className="about-title"
-        initial={{ opacity: 0, y: -20 }}
-        animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
-        transition={{ duration: 1 }}
-      >
-        About Me
-      </motion.h2>
+      <h2 className="about-title">About Me</h2>
 
       <div className="about-content-wrapper">
         <motion.div className="about-content-container">
@@ -93,7 +94,7 @@ export function About() {
             className="about-image-container"
             initial={{ opacity: 0, x: -100 }}
             animate={controlsImage}
-            transition={{ duration: 1.5 }}
+            transition={{ duration: 1 }}
           >
             <img src={photo} alt="Teja" className="about-image" />
           </motion.div>
@@ -102,16 +103,16 @@ export function About() {
             className="about-text"
             initial={{ opacity: 0, x: 100 }}
             animate={controlsText}
-            transition={{ duration: 1.5 }}
+            transition={{ duration: 1 }}
           >
-            Hey there! I'm Teja, a Software Engineer with a robust foundation in full-stack
-            development and automation. I bring over two years of experience
-            building scalable systems using React.js, Golang, and cloud
-            technologies. I'm passionate about crafting innovative solutions
-            that elevate user experience and streamline deployments. Currently
-            pursuing my Master's in Computer Science at the University of
-            Central Florida (GPA: 4.0). I'm dedicated to continuous learning and
-            staying up-to-date with the latest advancements in the tech
+            Hey there! I'm Teja, a Software Engineer with a robust foundation in
+            full-stack development and automation. I bring over two years of
+            experience building scalable systems using React.js, Golang, and
+            cloud technologies. I'm passionate about crafting innovative
+            solutions that elevate user experience and streamline deployments.
+            Currently pursuing my Master's in Computer Science at the University
+            of Central Florida (GPA: 4.0). I'm dedicated to continuous learning
+            and staying up-to-date with the latest advancements in the tech
             industry.
           </motion.p>
         </motion.div>

@@ -1,76 +1,74 @@
+import { useState } from "react";
+import { motion } from "framer-motion";
+import "./styles.css";
+
 export function Contact() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleChange = (e) =>
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Submitted:", formData);
+    setSubmitted(true);
+    setFormData({ name: "", email: "", message: "" });
+  };
+
   return (
-    <section
-      style={{
-        minHeight: "100vh",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        padding: "3rem 1rem",
-      }}
-    >
-      <form
-        style={{
-          width: "100%",
-          maxWidth: "32rem",
-          display: "flex",
-          flexDirection: "column",
-          gap: "1rem",
-          background: "#fff",
-          padding: "2rem",
-          borderRadius: "0.75rem",
-          boxShadow: "0 10px 15px rgba(0,0,0,0.1)",
-        }}
+    <section id="contact" className="contact-section">
+      <motion.h2
+        className="contact-title"
+        initial={{ opacity: 0, y: -20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
       >
-        <h2
-          style={{
-            fontSize: "2rem",
-            marginBottom: "1rem",
-            textAlign: "center",
-          }}
-        >
-          Contact Me
-        </h2>
+        📬 Contact Me
+      </motion.h2>
+
+      <motion.form
+        className="contact-form"
+        onSubmit={handleSubmit}
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+      >
         <input
           type="text"
-          placeholder="Name"
-          style={{
-            padding: "0.5rem",
-            border: "1px solid #d1d5db",
-            borderRadius: "0.375rem",
-          }}
+          name="name"
+          placeholder="Your Name"
+          value={formData.name}
+          onChange={handleChange}
+          required
         />
         <input
           type="email"
-          placeholder="Email"
-          style={{
-            padding: "0.5rem",
-            border: "1px solid #d1d5db",
-            borderRadius: "0.375rem",
-          }}
+          name="email"
+          placeholder="Your Email"
+          value={formData.email}
+          onChange={handleChange}
+          required
         />
         <textarea
-          placeholder="Message"
-          rows={4}
-          style={{
-            padding: "0.5rem",
-            border: "1px solid #d1d5db",
-            borderRadius: "0.375rem",
-          }}
+          name="message"
+          placeholder="Your Message"
+          rows={5}
+          value={formData.message}
+          onChange={handleChange}
+          required
         />
-        <button
-          type="submit"
-          style={{
-            background: "#3b82f6",
-            color: "#fff",
-            padding: "0.5rem 1rem",
-            borderRadius: "0.375rem",
-            border: "none",
-          }}
-        >
-          Send
+        <button type="submit" className="submit-button">
+          {submitted ? "Message Sent ✅" : "Send Message"}
         </button>
-      </form>
+      </motion.form>
+      <footer className="contact-footer">
+        &copy; {new Date().getFullYear()} Teja Puvvula. All rights reserved.
+      </footer>
     </section>
   );
 }

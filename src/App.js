@@ -1,16 +1,18 @@
-import { Intro, About, Experience, Projects, Contact, Footer } from "./Sections";
-import './App.css';
+
+import { Intro, About, Experience, Projects, Contact } from "./Sections";
+import { Navbar } from "./components/Navbar";
+import "./App.css";
 
 function App() {
   return (
     <div className="App">
+      <Navbar />
       <div style={{ fontFamily: "Montserrat" }}>
         <Intro />
         <About />
         <Experience />
         <Projects />
         <Contact />
-        <Footer />
       </div>
     </div>
   );

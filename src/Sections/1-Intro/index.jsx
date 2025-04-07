@@ -83,7 +83,10 @@ export function Intro() {
   }, []);
 
   return (
-    <section id="intro" className="intro-section">
+    <section
+      id="intro"
+      className="intro-section"
+    >
       <Canvas
         className="intro-canvas"
         camera={{ position: [0, 0, 10], fov: 75 }}
