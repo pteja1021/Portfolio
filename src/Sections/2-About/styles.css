@@ -1,0 +1,99 @@
+.about-section {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2rem;
+  overflow: hidden;
+}
+
+.about-image-container {
+  flex: 0.5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.about-image {
+  width: clamp(15rem, 25vw, 40em);
+  height: clamp(15rem, 25vw, 40em);
+  border-radius: 50%;
+  object-fit: cover;
+  transition: transform 0.3s ease-in-out;
+  margin: 1rem;
+}
+
+.about-image:hover {
+  transform: scale(1.05);
+}
+
+.about-text {
+  max-width: 50%;
+  flex: 3;
+  font-size: clamp(0.8rem, 2.5vw, 1.6rem);
+  text-align: left;
+  margin: 1rem;
+  line-height: 1.3;
+  z-index: 1;
+}
+
+/* Tablets */
+@media (max-width: 1024px) {
+  .about-text {
+    font-size: 1.5rem; /* clamp will still be in effect, but you can keep this if needed */
+  }
+}
+
+/* Mobile Devices */
+@media (max-width: 768px) {
+  .about-section {
+    flex-direction: column;
+  }
+
+  .about-text {
+    max-width: 90%;
+    font-size: 1rem;
+    text-align: center;
+    padding: 1rem;
+  }
+
+  .about-image-container {
+    margin-bottom: 2rem;
+  }
+}
+
+/* Optional: for background canvas */
+.about-canvas {
+  position: absolute !important;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: 100% !important;
+  z-index: 0;
+}
+
+.about-title {
+  z-index: 1;
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin-bottom: 0;
+  text-align: center;
+  width: 100%;
+}
+
+.about-content-wrapper {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  z-index: 1;
+}
+
+.about-content-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
