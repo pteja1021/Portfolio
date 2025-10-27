@@ -11,11 +11,11 @@ const projects = [
     link: "https://github.com/pteja1021/puntos",
   },
   {
-    title: "Hand Sign Recognition",
-    tech: ["Python", "PyTorch", "Sklearn"],
+    title: "Onegrad",
+    tech: ["React", "Node JS", "Express", "MongoDB", "OpenAI API"],
     description:
-      "99% accuracy using DenseNet, ShuffleNet, ResNet ensemble. Built in PyTorch with preprocessing.",
-    link: "https://github.com/pteja1021",
+      "A one stop platform for all educational needs.",
+    link: "https://demo.onegrad.ai",
   },
   {
     title: "Digit and Letter Recognition",
@@ -85,7 +85,7 @@ export function Projects() {
                 target="_blank"
                 rel="noreferrer"
               >
-                GitHub ↗
+                Link ↗
               </a>
             )}
           </motion.div>
